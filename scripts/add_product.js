@@ -1,4 +1,7 @@
 const myStorage = window.localStorage
+const idStorage = window.localStorage
+
+let cart = []
 
 // function to open and close add modal 
 let modalBtn = document.querySelector(".create-product")
@@ -7,16 +10,18 @@ let modalClose = document.querySelector(".close-modal")
 
 modalBtn.addEventListener('click', function(){
     modal.classList.add("modal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = -1)
 })
 
 modalClose.addEventListener('click', function(){
     modal.classList.remove("modal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = 0)
 })
 
 // function to add to cart 
-function addToCart(){
+// function addToCart(){
 
-    let carts = document.querySelector(".btn-cart");
+//     let carts = document.querySelector(".btn-cart");
     
 // for(let i=0; i< carts.length; i++){
 //     carts[i].addEventListener('click', () => {
@@ -32,7 +37,7 @@ function addToCart(){
 //     localStorage.setItem('cartNumbers', 1);
 // }
 
-}
+// }
 
 
 // function to show products 
@@ -42,23 +47,64 @@ fetch('https://flask-project-eomp.herokuapp.com/show-products')
     console.log(data)
 
 
-let productContainer = document.querySelector('#product-container')
-productContainer.innerHTML = "";
-data['data'].forEach(product => {
-productContainer.innerHTML += `<div class = 'product'>
-                                 <h1 class="product_id">${product[0]}.</h1>
-                                 <img src="${product[5]}" class="product_image">
-                                 <h4 class="product_title">${product[1]}</h4>
-                                 <p class="product_price">R ${product[2]}<p> 
-                                 <p class="product_description">${product[4]}<p>
-                                
-                                 <div class="cart">
-                                 <button class="btn-cart" onClick="addToCart()">Add to cart</button>
-                                 </div>
-                                 
-                                 </div>`
+    let productContainer = document.querySelector('#product-container')
+    productContainer.innerHTML = "";
+    data['data'].forEach(product => {
+        productContainer.innerHTML += `<div class = 'product'>
+                                        <h1 class="product_id">${product[0]}.</h1>
+                                        <img src="${product[5]}" class="product_image">
+                                        <h4 class="product_title">${product[1]}</h4>
+                                        <p class="product_price">R ${product[2]}<p> 
+                                        <p class="product_description">${product[4]}<p>
+                                        
+                                        <div class="cart">
+                                        <button class="btn-cart1" onclick="addToCart(${product[0]})">ADD TO CART</button>
+                                        </div>
+                                        
+                                        </div>`
 })
 })
+// function to add to cart
+function addToCart(id){
+    // let quantity = e.target.parentNode.querySelector('.cartquantity').value
+    let object = {}
+    // let productID = document.querySelector(".product_id").value
+    console.log(id)
+    fetch(`https://flask-project-eomp.herokuapp.com/view-product/${id}`, {
+        headers: {
+            // 'Authorization': `jwt ${mystorage.getItem('jwt-token')}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        object['id'] = data['data'][0];
+        object['image'] = data['data'][5];
+        object['name'] = data['data'][1];
+        object['price'] = data['data'][2]
+        // object['quantity'] = parseInt(quantity);
+        // object['totalprice'] =  parseInt(data['data'][0][2]);
+        console.log(object);
+        for (let item in cart){
+            console.log(item)
+            if (object['name'] == cart[item]['name']){
+                cart[item]['quantity'] += object['quantity'];
+                cart[item]['totalprice'] += object['totalprice'];
+                console.log(cart)
+                myStorage.setItem('cart', JSON.stringify(cart))
+                idStorage.setItem('id', data['data'][0])
+                alert('Cart item updated')
+                return
+            };
+        }    
+        cart = cart.concat(object)
+        console.log(cart)
+        myStorage.setItem('cart', JSON.stringify(cart))
+        alert('Item added to cart successfully')
+        window.location.href = 'cart.html'
+    })
+}
+
 
 // add product
 function addProduct(){
@@ -112,3 +158,165 @@ function addProduct(){
 //         myStorage.setItem("jwt-token", res["access_token"]);
 //         alert("Product updated successfully.")})
 // }
+
+
+// function addClicked(id){
+    // let productID = document.querySelector("#delProduct-id").value
+    // fetch(`https://flask-project-eomp.herokuapp.com/view-product/${id}/`, {
+    //             method: "GET",
+    //             body: JSON.stringify(),
+    //             headers: {
+    //                 'Content-type': 'application/json',
+    //             }
+    //     })
+    //     .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             console.log(data['data'][0])
+    //             let title = `${data['data'][1]}`
+    //             let price = `${data['data'][2]}`
+    //             let imageSrc = `${data['data'][5]}`
+    //             console.log(title)
+    //             console.log(price)
+    //             console.log(imageSrc)
+    //             addItemToCart(title, price, imageSrc)
+    //             cartTotal()
+    //     })
+        // document.getElementsByClassName('btn-cart1').addEventListener("click", addClicked())
+        // }
+
+
+// function addItemToCart(title, price, imageSrc){
+//     let cartRow = document.createElement('div')
+//     cartRow.classList.add('checkout-subheadings2')
+//     let cartItems = document.querySelector('#checkout-container')
+//     let cartItemName = cartItems.querySelector('.cart-item-title')
+//     console.log(cartItemName)
+//     for(let i = 0; i <  cartItemName.length; i++){
+//         if(cartItemName[i].innerText == title){
+//             alert("This item is already added to the cart")
+//             return
+//         }
+//     }
+//     let cartRowContent = `<div class="cart-item cart-column">
+//                           <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+//                           <span class="cart-item-title">${title}</span>
+//                           </div>
+//                           <span class="cart-price cart-column">R${price}</span>
+//                           <div class="cart-quantity cart-column">
+//                           <input class="cart-quantity-input" type="number" value="1">
+//                         <button class="btn btn-danger" type="button">REMOVE</button>
+//                     </div>`
+    
+//     cartRow.innerHTML = cartRowContent
+//     cartItems.append(cartRow)
+    // cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeItem )
+    // cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChange)
+ 
+// }
+
+
+//     let cartRowContent = `<div class="cart-item cart-column">
+//                           <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+//                           <span class="cart-item-title">${title}</span>
+//                           </div>
+//                           <span class="cart-price cart-column">R${price}</span>
+//                           <div class="cart-quantity cart-column">
+//                           <input class="cart-quantity-input" type="number" value="1">
+//                         <button class="btn btn-danger" type="button">REMOVE</button>
+//                     </div>`
+    
+//     cartRow.innerHTML = cartRowContent
+
+let itemId = idStorage.getItem('id')
+// function to show products 
+fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}`)
+.then(res => res.json())
+.then(data =>{
+    console.log(data)
+
+
+    // let productContainer = document.querySelector('#product-container')
+    // productContainer.innerHTML = "";
+    // data['data'].forEach(product => {
+    //     productContainer.innerHTML += `<div class = 'product'>
+    //                                     <h1 class="product_id">${product[0]}.</h1>
+    //                                     <img src="${product[5]}" class="product_image">
+    //                                     <h4 class="product_title">${product[1]}</h4>
+    //                                     <p class="product_price">R ${product[2]}<p> 
+    //                                     <p class="product_description">${product[4]}<p>
+                                        
+    //                                     <div class="cart">
+    //                                     <button class="btn-cart1" onclick="addToCart(${product[0]})">ADD TO CART</button>
+    //                                     </div>
+                                        
+    //                                     </div>`
+})
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function to increase quantity
+function quantityChange(){
+    let input = event.target
+    if (isNaN(input.value) || input.value <= 0){
+        input.value = 1
+    } 
+    cartTotal()
+}
+
+
+// function to remove item 
+function removeItem(){
+let removeCart = document.getElementsByClassName('btn-danger')
+for(let i = 0; i < removeCart.length; i++){
+    let button = removeCart[i]
+    button.addEventListener('click', function(event){
+        let btnClicked = event.target
+        btnClicked.parentElement.parentElement.remove()
+        cartTotal()
+    })
+    let quantityInputs = document.getElementsByClassName('cart-quantity-input')
+    for(let i = 0; i < quantityInputs.length; i++){
+        let input = quantityInputs[i]
+        input.addEventListener('change', quantityChange)
+    }
+}
+}
+
+// function to calculate total amount : Tashwill
+function cartTotal(){
+let cartContainer = document.getElementsByClassName('cart-items')[0]
+let cartRow = cartContainer.getElementsByClassName('cart-row')
+let total = 0
+for(let i = 0; i < cartRow.length; i++){
+    let row = cartRow[i]
+    let priceItem = row.getElementsByClassName('cart-price')[0]
+    let quantityItem = row.getElementsByClassName('cart-quantity-input')[0]
+    let price = parseFloat(priceItem.innerText.replace('R', ''))
+    let quantity = quantityItem.value
+    total = Math.round(total + (price * quantity))
+}
+total = Math.round(total * 100) / 100
+document.getElementsByClassName('cart-total-price')[0].innerHTML = 'R' + total
+
+}

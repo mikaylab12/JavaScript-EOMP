@@ -5,10 +5,12 @@ let delModalClose = document.querySelector(".close-deleteModal")
 
 delModalBtn.addEventListener('click', function(){
     delModal.classList.add("deleteModal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = -1)
 })
 
 delModalClose.addEventListener('click', function(){
     delModal.classList.remove("deleteModal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = 0)
 })
 
 // function to delete products

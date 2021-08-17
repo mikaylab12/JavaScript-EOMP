@@ -5,10 +5,12 @@ let updModalClose = document.querySelector(".close-updateModal")
 
 updModalBtn.addEventListener('click', function(){
     updModal.classList.add("updateModal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = -1)
 })
 
 updModalClose.addEventListener('click', function(){
     updModal.classList.remove("updateModal-active")
+    document.querySelectorAll('.product').forEach(product => product.style.zIndex = 0)
 })
 
 
