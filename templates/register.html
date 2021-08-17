@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beelders Register Page</title>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+</head>
+<body>
+    <div id="registerPage">
+    <form class="form"
+        action="https://flask-project-eomp.herokuapp.com/register/"
+        method="POST">
+    <h1 class="heading">Register User</h1>
+    <div>
+        <!-- Input for name -->
+        <div class="form-group" >
+          <input
+            class="form-input"
+            type="text"
+            id="name"
+            name="first_name"
+            required
+            placeholder="Name"
+          />
+        </div>
+        <!-- Input for surname-->
+            <div class="form-group">
+              <input
+                class="form-input"
+                type="text"
+                id="surname"
+                name="last_name"
+                required
+                placeholder="Surname"
+              />
+            </div>
+      <!-- Input for email -->
+      <div class="form-group">
+          <input
+            class="form-input"
+            type="email"
+            name="email_address"
+            id="email"
+            required
+            placeholder="example@email.com"
+          />
+        </div>
+      <!-- Input for username -->
+        <div class="form-group">
+          <input
+            class="form-input"
+            type="text"
+            id="username"
+            name="username"
+            required
+            placeholder="Username"
+          />
+        </div>
+        <!-- Input for password -->
+        <div class="form-group">
+          <input
+            class="form-input"
+            type="text"
+            name="password"
+            id="password"
+            required
+            placeholder="Password"
+          />
+        </div>
+    </div>
+    <!-- back and register buttons-->
+        <div class="buttons">
+            <a  class="link" href="./home.html">BACK</a>
+            <a href="/templates/complete_register.html" class="button" >Register</a>
+        </div>
+    
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/products.css">
+    <title>Beelders Store's Products</title>
+</head>
+<body>
+        <nav class="navbar">
+            <ul class="navbar-content">
+                <div class="add-products">
+              <li class="nav-link">
+                <div class="search-and-heading">
+                    <!-- <div class="navbar-search">
+                        <input type="text" placeholder="Search for...">
+                        <button><i class="fas fa-search search-button"></i></button>
+                    </div> -->
+                    <div class="navbar-header">
+                        <h2>Beelders Stores.</h2>
+                    </div>
+                </div>
+                <div class="modal">
+                  <div class="modal-content">
+                    <h2 class="modal-header">Add Item</h2>
+                    <form action="https://flask-project-eomp.herokuapp.com/add-product/" class="modal-form">
+                      <input type="text" id="product-name" name="product_name" placeholder="Product Name">
+                      <input type="text" id="price" name="product_price" placeholder="Price">
+                      <input type="text" id="quantity" name="product_quantity" placeholder="Quantity">
+                      <input type="text" id="description" name="product_description" placeholder="Description">
+                      <input type="text" id="picture" name="product_picture" placeholder="Picture Link">
+                      <input type="text" id="total" name="total" placeholder="Total">
+                    </form>
+                    <div class="buttons">
+                        <button class="close-modal">Close</button>
+                        <button type="submit" class="create-btn" onclick="addProduct()">Create</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- second modal -->
+                <div class="updateModal">
+                    <div class="updateModal-content">
+                      <h2 class="updateModal-header">Update Item</h2>
+                      <form action="https://flask-project-eomp.herokuapp.com/edit-product/" class="updateModal-form">
+                        <input type="text" id="product-id" name="product_id" placeholder=" Product ID">
+                        <input type="text" id="updProduct-name" name="product_name" placeholder="Product Name">
+                        <input type="text" id="updPrice" name="product_price" placeholder="Price">
+                        <input type="text" id="updQuantity" name="product_quantity" placeholder="Quantity">
+                        <input type="text" id="updDescription" name="product_description" placeholder="Description">
+                        <input type="text" id="updPicture" name="product_picture" placeholder="Picture Link">
+                        <!-- <input type="text" id="updTotal" name="total" placeholder="Total"> -->
+                      </form>
+                      <div class="updateButtons">
+                          <button class="close-updateModal">Close</button>
+                          <button type="submit" class="update-btn" onclick="updateProduct()">Update</button>
+                      </div>
+                    </div>
+                </div>
+                <!-- third modal -->
+                <div class="deleteModal">
+                    <div class="deleteModal-content">
+                      <h2 class="deleteModal-header">Delete Item</h2>
+                      <form action="https://flask-project-eomp.herokuapp.com/edit-product/" class="deleteModal-form">
+                        <input type="text" id="delProduct-id" name="product_id" placeholder="Product ID">
+                        <!-- <input type="text" id="delPrice" name="product_price" placeholder="Price">
+                        <input type="text" id="delQuantity" name="product_quantity" placeholder="Quantity">
+                        <input type="text" id="delDescription" name="product_description" placeholder="Description">
+                        <input type="text" id="delPicture" name="product_picture" placeholder="Picture Link"> -->
+                        <!-- <input type="text" id="updTotal" name="total" placeholder="Total"> -->
+                      </form>
+                      <div class="deleteButtons">
+                          <button class="close-deleteModal">Close</button>
+                          <button type="submit" class="delete-btn" onclick="deleteProduct()">Delete</button>
+                      </div>
+              </li>
+            </div>
+            <div class="nav-btns">
+                <button class="create-product"><i class="fas fa-plus"></i></button>
+                <button class="update-product"><i class="fas fa-edit"></i></button>
+                <button class="delete-product"><i class="fas fa-trash"></i></button>
+                <li class="navbar-cart"><a href="/templates/cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+                <li class="navbar-logout"><a href="/templates/home.html"><i class="fas fa-sign-out-alt"></i></a></li>
+            </div>
+        </ul>
+    </nav> 
+    <div id="product-container"></div>
+    <script
+      src="https://kit.fontawesome.com/76a522a414.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/add_products.js"></script>
+    <script src="/scripts/edit_products.js"></script>
+    <script src="/scripts/delete_products.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/cart.css">
+    <title>Beelders Admin Page</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-content">
+            <div class="add-products">
+                <li class="nav-link">
+                    <div class="search-and-heading">
+                        <div class="navbar-search">
+                            <li class="navbar-products"><a href="/templates/products.html"><i class="fas fa-gift"></i></a></li>
+                        </div>
+                        <div class="navbar-header">
+                            <h2>Beelders Stores.</h2>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="nav-btns">
+                <!-- <button class="create-user"><i class="fas fa-user-edit"></i></button>
+                <button class="delete-user"><i class="fas fa-user-times"></i></button> -->
+                <li class="navbar-logout"><a href="/templates/home.html"><i class="fas fa-sign-out-alt"></i></a></li>
+            </div>
+        </ul>
+    </nav> 
+    <div id="cart">
+        <div class="checkoutPage">
+            <div>
+                <h1 class="heading">CART</h1>
+            </div>
+            <div class="checkout-subheadings">
+                    <div> <span class="product-heading">Product</span></div>
+                    <div><span class="quantity-heading">Quantity</span></div>
+                    <div>
+                        <span class="price-heading">Price</span>
+                    </div>
+                
+            </div>
+            <div id="checkout-container"></div>
+            <div class="buttons">
+                <li><a href="/templates/admin_complete.html" class="button" >Checkout</a></li>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="registerPage"> -->
+        <!-- <form class="form"
+            action="https://flask-project-eomp.herokuapp.com/register-admin/"
+            method="POST"> -->
+        
+            <!-- <div> -->
+                <!-- Input for name -->
+                <!-- <div class="form-group" >
+                    <label class="form-label" >Name</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    id="name"
+                    name="admin_name"
+                    required
+                    placeholder="Name"
+                />
+                </div> -->
+                <!-- Input for surname-->
+                <!-- <div class="form-group">
+                <label class="form-label" >Surname</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    id="surname"
+                    name="admin_surname"
+                    required
+                    placeholder="Surname"
+                />
+                </div> -->
+                <!-- Input for email -->
+                <!-- <div class="form-group">
+                    <label class="form-label" >Email:</label>
+                    <input
+                    class="form-input"
+                    type="email"
+                    name="admin_email"
+                    id="email"
+                    required
+                    placeholder="example@email.com"
+                    />
+                </div> -->
+                <!-- Input for username -->
+                <!-- <div class="form-group">
+                    <label class="form-label" >Username</label>
+                    <input
+                    class="form-input"
+                    type="text"
+                    id="username"
+                    name="admin_username"
+                    required
+                    placeholder="Username"
+                    />
+                </div> -->
+                <!-- Input for password
+                <div class="form-group">
+                    <label class="form-label" >Password:</label>
+                    <input
+                    class="form-input"
+                    type="text"
+                    name="admin_password"
+                    id="password"
+                    required
+                    placeholder="Password"
+                    />
+                </div>
+            </div>
+            
+        
+            </form>
+        </div> -->
+    <script
+      src="https://kit.fontawesome.com/76a522a414.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/cart.js"></script>
+</body>
+</html>

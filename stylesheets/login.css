@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    /* background-color: #BAB5F9; */
+    background-image: url(/images/login:register.jpeg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#loginPage{
+    font-family: monospace;
+    margin-top: 4%;
+    padding: 3% 5%;
+    display: flex;
+    flex-direction: column; 
+    background: rgba( 176, 134, 107, 0.60 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12.0px );
+    -webkit-backdrop-filter: blur( 12.0px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.heading{
+    color: white;
+    font-size: 70px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    font-size: 25px;
+  }
+  
+  .form-label {
+    display: none;
+  }
+
+  .form-input {
+    background: rgba(163, 109, 59, 0.65);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    font-family: monospace;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .button {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: monospace;
+    text-transform: uppercase;
+    border: white 1px solid;
+    background: rgba( 176, 134, 107, 0.60 );
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    justify-self: center;
+    margin-top: 10px;
+  }
+
+  .button:hover {
+    background-color: #895737;
+    transition: 5ms;
+  }
+
+  .form-input::placeholder {
+    text-transform: uppercase;
+    color: silver;
+    font-family: monospace;
+    /* text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    font-size: 18px;
+    justify-content: left;
+  }
+
+  .link{
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: white 1px solid;
+    background: rgba( 176, 134, 107, 0.60 );
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    
+}
+
+.link:hover {
+    background-color: #895737;
+    transition: 5ms;
+}
+
+.buttons {
+  margin-top: 5%;
+}

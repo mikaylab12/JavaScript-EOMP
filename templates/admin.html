@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <title>Beelders Admin Page</title>
+</head>
+<body>
+        <nav class="navbar">
+            <ul class="navbar-content">
+                <div class="add-products">
+              <li class="nav-link">
+                    <div class="search-and-heading">
+                        <div class="navbar-search">
+                            <li class="navbar-products"><a href="/templates/products.html"><i class="fas fa-gift"></i></a></li>
+                        </div>
+                        <div class="navbar-header">
+                            <h2>Beelders Stores.</h2>
+                        </div>
+                    </div>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <h2 class="modal-header">Update User</h2>
+                            <form action="https://flask-project-eomp.herokuapp.com/edit-user/" class="modal-form">
+                            <input type="text" id="user-id" name="user_id" placeholder="User ID">
+                            <input type="text" id="name" name="first_name" placeholder="Name">
+                            <input type="text" id="surname" name="last_name" placeholder="Surname">
+                            <input type="text" id="email" name="email_address" placeholder="Email">
+                            <input type="text" id="username" name="username" placeholder="Username">
+                            <input type="text" id="password" name="password" placeholder="Password">
+                            </form>
+                            <div class="buttons">
+                                <button class="close-modal">Close</button>
+                                <button type="submit" class="create-btn" onclick="updateUser()">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deleteModal">
+                        <div class="deleteModal-content">
+                            <h2 class="deleteModal-header">Delete User</h2>
+                            <form action="https://flask-project-eomp.herokuapp.com/edit-user/" class="deleteModal-form">
+                                <input type="text" id="delUser-id" name="user_id" placeholder="User ID">
+                                <!-- <input type="text" id="delPrice" name="product_price" placeholder="Price">
+                                <input type="text" id="delQuantity" name="product_quantity" placeholder="Quantity">
+                                <input type="text" id="delDescription" name="product_description" placeholder="Description">
+                                <input type="text" id="delPicture" name="product_picture" placeholder="Picture Link"> -->
+                                <!-- <input type="text" id="updTotal" name="total" placeholder="Total"> -->
+                            </form>
+                            <div class="deleteButtons">
+                                <button class="close-deleteModal">Close</button>
+                                <button type="submit" class="delete-btn" onclick="deleteUser()">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+              </li>
+            </div>
+            <div class="nav-btns">
+                <button class="create-user"><i class="fas fa-user-edit"></i></button>
+                <button class="delete-user"><i class="fas fa-user-times"></i></button>
+                <li class="navbar-logout"><a href="/templates/home.html"><i class="fas fa-sign-out-alt"></i></a></li>
+            </div>
+        </ul>
+    </nav> 
+    <div id="product-container"></div>
+    <script
+      src="https://kit.fontawesome.com/76a522a414.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/admin.js"></script>
+</body>
+</html>
