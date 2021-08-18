@@ -3,6 +3,10 @@ const idStorage = window.localStorage
 
 let cart = []
 
+if (JSON.parse(myStorage.getItem('cart')).length > 0){
+    cart = JSON.parse(myStorage.getItem('cart'))
+}
+
 // function to open and close add modal 
 let modalBtn = document.querySelector(".create-product")
 let modal = document.querySelector(".modal")
@@ -101,7 +105,6 @@ function addToCart(id){
         console.log(cart)
         myStorage.setItem('cart', JSON.stringify(cart))
         alert('Item added to cart successfully')
-        window.location.href = 'cart.html'
     })
 }
 
@@ -228,12 +231,12 @@ function addProduct(){
     
 //     cartRow.innerHTML = cartRowContent
 
-let itemId = idStorage.getItem('id')
-// function to show products 
-fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}`)
-.then(res => res.json())
-.then(data =>{
-    console.log(data)
+// let itemId = idStorage.getItem('id')
+// // function to show products 
+// fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}`)
+// .then(res => res.json())
+// .then(data =>{
+//     console.log(data)
 
 
     // let productContainer = document.querySelector('#product-container')
@@ -251,7 +254,7 @@ fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}`)
     //                                     </div>
                                         
     //                                     </div>`
-})
+// })
 // })
 
 

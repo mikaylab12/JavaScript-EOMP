@@ -18,7 +18,6 @@ function deleteProduct(){
     let productID = document.querySelector("#delProduct-id").value
     fetch(`https://flask-project-eomp.herokuapp.com/delete-product/${productID}`, {
         method: 'GET',
-        body: JSON.stringify(),
         headers: {
             'Content-Type' : 'application/json',
         },

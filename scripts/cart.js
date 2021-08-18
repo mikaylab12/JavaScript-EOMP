@@ -1,5 +1,52 @@
 const idStorage = window.localStorage
 
+let itemId = idStorage.getItem('id')
+// fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}/`)
+// .then(res => res.json())
+// .then(data =>{
+//         console.log(data)
+//         console.log(data['data'][1])
+//     let cartContainer = document.querySelector('#checkout-container')
+//     cartContainer.innerHTML = ""
+//         //  document.getElementsByClassName('product_id').innerHTML = `${data['data'][0]}`
+//         //  document.getElementsByClassName('cartProduct_title').innerHTML = `${data['data'][1]}`
+//     let cart = JSON.parse(idStorage.getItem('cart'))
+//     cart.forEach(product => {
+//     cartContainer.innerHTML += `<div class = 'cartProduct'>
+//                                 <img src="${data.data[5]}" class="cartProduct_image">
+//                                 <div class="cartProduct_info"> 
+//                                     <h1 class="cartProduct_id">${data.data[0]}.</h1>
+//                                     <h4 class="cartProduct_title">${data.data[1]}</h4>
+//                                 </div>
+//                                 <p class="cartProduct_price">R ${data.data[2]}<p> 
+        
+//                                 </div>`
+// })
+// })
+let cart = JSON.parse(idStorage.getItem('cart'))
+
+function createcart() {
+    console.log(cart)
+    let cartContainer = document.querySelector('#checkout-container')
+    cartContainer.innerHTML = ''
+    cart.forEach(product => {
+    cartContainer.innerHTML += `<div class = 'cartProduct'>
+                                <img src="${product['image']}" class="cartProduct_image">
+                                <div class="cartProduct_info"> 
+                                    <h1 class="cartProduct_id">${product['id']}.</h1>
+                                    <h4 class="cartProduct_title">${product['name']}</h4>
+                                </div>
+                                <input class="cartProduct-quantity-input" type="number" value="1">
+                                <p class="cartProduct_price">R ${product['price']}<p> 
+                                <div class="removeProduct"> 
+                                    <button id='${product['name']}'>REMOVE</button>
+                                </div>
+                                </div>`;
+                                
+    });
+    document.querySelectorAll('.removeProduct').forEach( button => button.addEventListener('click', removeItem))
+}
+createcart()
 // let carts = document.querySelector(".add-cart");
 
 // for(let i=0; i< carts.length; i++){
@@ -86,23 +133,33 @@ const idStorage = window.localStorage
 //     }
     
     
-// // function to remove item 
-//     function removeItem(){
-//     let removeCart = document.getElementsByClassName('btn-danger')
-//     for(let i = 0; i < removeCart.length; i++){
-//         let button = removeCart[i]
-//         button.addEventListener('click', function(event){
-//             let btnClicked = event.target
-//             btnClicked.parentElement.parentElement.remove()
-//             cartTotal()
-//         })
-//         let quantityInputs = document.getElementsByClassName('cart-quantity-input')
-//         for(let i = 0; i < quantityInputs.length; i++){
-//             let input = quantityInputs[i]
-//             input.addEventListener('change', quantityChange)
-//         }
-//     }
-//     }
+// function to remove item 
+    function removeItem(e){
+        console.log(e.target.id)
+        let itemname = e.target.id
+        console.log(itemname)
+        // let removeCart = document.getElementsByClassName('')
+        // for(let i = 0; i < removeCart.length; i++){
+        //     let button = removeCart[i]
+        //     button.addEventListener('click', function(event){
+        //         let btnClicked = event.target
+        //         btnClicked.parentElement.parentElement.remove()
+        //         // cartTotal()
+        //     })
+            // let quantityInputs = document.getElementsByClassName('cart-quantity-input')
+            // for(let i = 0; i < quantityInputs.length; i++){
+            //     let input = quantityInputs[i]
+            //     input.addEventListener('change', quantityChange)
+            // }
+        for (let  item in cart){
+            if (itemname == cart[item]['name']){
+                cart.splice(item, 1)
+                idStorage['cart'] = JSON.stringify(cart)
+                console.log(idStorage.getItem('cart'))
+                createcart()
+            }
+        }
+    }
 
 // // function to calculate total amount : Tashwill
 // function cartTotal(){
@@ -122,25 +179,25 @@ const idStorage = window.localStorage
 
 // }
 
-let itemId = idStorage.getItem('id')
-// function to show products 
-fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}`)
-.then(res => res.json())
-.then(data =>{
-    console.log(data)
-    console.log(data['data'][1])
-    // document.getElementsByClassName('product_id').innerText += `${data['data'][0]}`
+// let itemId = idStorage.getItem('id')
+// // function to show products 
+// fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}/`)
+// .then(res => res.json())
+// .then(data =>{
+//     console.log(data)
+//     console.log(data['data'][1])
+//     // document.getElementsByClassName('product_id').innerText += `${data['data'][0]}`
 
 
-    let cartContainer = document.getElementById('checkout-container')
-    cartContainer.innerHTML = "";
-    data['data'].forEach(product => {
-        cartContainer.innerHTML += `<div class = 'cartProduct'>
-                                        <h1 class="cartProductroduct_id">${product[0]}.</h1>
-                                        <img src="${product[5]}" class="cartProductroduct_image">
-                                        <h4 class="cartProductroduct_title">${product[1]}</h4>
-                                        <p class="cartProductroduct_price">R ${product[2]}<p> 
+//     let cartContainer = document.getElementById('checkout-container')
+//     cartContainer.innerHTML = "";
+//     data['data'].forEach(product => {
+//         cartContainer.innerHTML += `<div class = 'cartProduct'>
+//                                         <h1 class="cartProductroduct_id">${product[0]}.</h1>
+//                                         <img src="${product[5]}" class="cartProductroduct_image">
+//                                         <h4 class="cartProductroduct_title">${product[1]}</h4>
+//                                         <p class="cartProductroduct_price">R ${product[2]}<p> 
                 
-                                        </div>`
-})
-})
+//                                         </div>`
+// })
+// })
