@@ -38,13 +38,14 @@ function createcart() {
                                 </div>
                                 <input class="cartProduct-quantity-input" type="number" value="1">
                                 <p class="cartProduct_price">R ${product['price']}<p> 
-                                <div class="removeProduct"> 
-                                    <button id='${product['name']}'>REMOVE</button>
+                                <div class="remove-btn"> 
+                                    <button class="removeProduct" id='${product['name']}' >REMOVE</button>
                                 </div>
-                                </div>`;
-                                
+                                </div>`;               
     });
+    document.querySelectorAll('.cartProduct-quantity-input').forEach(counter => {console.log(counter); counter.addEventListener('change', quantityChange)});
     document.querySelectorAll('.removeProduct').forEach( button => button.addEventListener('click', removeItem))
+    cartTotal()
 }
 createcart()
 // let carts = document.querySelector(".add-cart");
@@ -124,13 +125,13 @@ createcart()
 
     
 // function to increase quantity
-//     function quantityChange(){
-//         let input = event.target
-//         if (isNaN(input.value) || input.value <= 0){
-//             input.value = 1
-//         } 
-//         cartTotal()
-//     }
+    function quantityChange(event){
+        let input = event.target
+        if (isNaN(input.value) || input.value <= 0){
+            input.value = 1
+        } 
+        cartTotal()
+    }
     
     
 // function to remove item 
@@ -146,11 +147,11 @@ createcart()
         //         btnClicked.parentElement.parentElement.remove()
         //         // cartTotal()
         //     })
-            // let quantityInputs = document.getElementsByClassName('cart-quantity-input')
-            // for(let i = 0; i < quantityInputs.length; i++){
-            //     let input = quantityInputs[i]
-            //     input.addEventListener('change', quantityChange)
-            // }
+        let quantityInputs = document.getElementsByClassName('cartProduct-quantity-input')
+        for(let i = 0; i < quantityInputs.length; i++){
+            let input = quantityInputs[i]
+            input.addEventListener('change', quantityChange)
+        }
         for (let  item in cart){
             if (itemname == cart[item]['name']){
                 cart.splice(item, 1)
@@ -159,25 +160,27 @@ createcart()
                 createcart()
             }
         }
+        cartTotal()
     }
 
-// // function to calculate total amount : Tashwill
-// function cartTotal(){
-//     let cartContainer = document.getElementsByClassName('cart-items')[0]
-//     let cartRow = cartContainer.getElementsByClassName('cart-row')
-//     let total = 0
-//     for(let i = 0; i < cartRow.length; i++){
-//         let row = cartRow[i]
-//         let priceItem = row.getElementsByClassName('cart-price')[0]
-//         let quantityItem = row.getElementsByClassName('cart-quantity-input')[0]
-//         let price = parseFloat(priceItem.innerText.replace('R', ''))
-//         let quantity = quantityItem.value
-//         total = Math.round(total + (price * quantity))
-//     }
-//     total = Math.round(total * 100) / 100
-//     document.getElementsByClassName('cart-total-price')[0].innerHTML = 'R' + total
+// function to calculate total amount : Tashwill
+function cartTotal(){
+    let cartContainer = document.querySelector('#checkout-container')[0]
+    let cartRow = document.getElementsByClassName('cartProduct')
+    let total = 0
+    for(let i = 0; i < cartRow.length; i++){
+        let row = cartRow[i]
+        console.log(row)
+        let priceItem = row.querySelector('.cartProduct_price')
+        let quantityItem = row.getElementsByClassName('cartProduct-quantity-input')[0]
+        let price = parseFloat(priceItem.innerText.replace('R ', ''))
+        let quantity = quantityItem.value
+        total = Math.round(total + (price * quantity))
+    }
+    total = Math.round(total * 100) / 100
+    document.getElementsByClassName('cart-price')[0].innerHTML = 'R' + total
 
-// }
+}
 
 // let itemId = idStorage.getItem('id')
 // // function to show products 

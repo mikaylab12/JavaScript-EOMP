@@ -240,18 +240,27 @@ body {
 }
 
 .checkout-subheadings{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /* display: flex;
+    flex-direction: row; */
+    /* justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 150px 120px;
+    grid-template-rows: 1fr;
     font-size: 25px;
     color: white;
 }   
 
 .checkout-subheadings span{
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    margin: 150px;
-    margin-bottom: 20px;
+    margin: 30px;
+    margin-bottom: 20px; */
+    /* display: grid;
+    grid-template-columns: 150px 1fr 100px 150px 120px;
+    grid-template-rows: 1fr;
+    font-size: 25px;
+    color: white; */
+    display: grid;
 }
 
 .buttons{
@@ -281,24 +290,26 @@ body {
     border-bottom: #583B34 2px solid;
     /* border-left: #583B34 2px solid; */
     /* margin: 10px */
+    grid-column: 1;
 }
 
 .quantity-heading {
     /* justify-content: space-around; */
     border-bottom: #583B34 2px solid;
     /* margin: 10px */
+    grid-column: 3;
 }
 
 .price-heading {
     /* justify-content: space-around; */
     border-bottom: #583B34 2px solid;
     /* margin: 10px */
-    justify-self: flex-end;
+    grid-column: 4;
 }
 
 .cartProduct{
     display: grid;
-    grid-template-columns: 100px 1fr 100px 100px 200px;
+    grid-template-columns: 100px 1fr 100px 150px 120px;
     grid-template-rows: 1fr;
     border: #583B34 1px solid;
     border-radius: 20px;
@@ -336,7 +347,7 @@ body {
 
 .cartProduct_price{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     font-size: 25px;
     grid-column: 4;
     color: white;
@@ -344,19 +355,27 @@ body {
 }
 
 .removeProduct{
-    grid-column: 5;
-    align-self: center;
-    grid-row: 1;
-    padding: 5px 30px;
-    font-size: 20px;
-    background-color: transparent;
-    border: none;
+    cursor: pointer;
+    border: white 1px solid;
+    background: rgba( 176, 134, 107, 0.60 );
     color: white;
+    border-radius: 20px;
+    padding: 12px 18px;
+    font-size: 17px;
+    margin: 10px;
+    transition: 50ms ease;
 
 }
 
-.removeProduct button:hover {
-    color: #583B34;
+.remove-btn{
+    grid-column: 5;
+    align-self: center;
+    grid-row: 1;
+    justify-content: end;
+}
+
+.removeProduct:hover {
+    background-color: #583B34;
     transition: 5ms;
 }
 
@@ -366,4 +385,16 @@ body {
     height: max-content;
     padding: 5px 5px;
     margin: 5px 10px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    font-size: 30px;
+}
+
+.cart-price span{
+    display: flex;
+    justify-content: flex-end;
 }
