@@ -14,7 +14,6 @@ updModalClose.addEventListener('click', function(){
 })
 
 
-
 // update products
 function updateProduct(){
     let productID = document.querySelector("#product-id").value

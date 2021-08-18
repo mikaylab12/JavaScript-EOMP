@@ -239,31 +239,6 @@ body {
     font-family: monospace;
 }
 
-.checkout-subheadings{
-    /* display: flex;
-    flex-direction: row; */
-    /* justify-content: space-between; */
-    display: grid;
-    grid-template-columns: 100px 250px 100px 150px 120px;
-    grid-template-rows: 1fr;
-    font-size: 25px;
-    color: white;
-}   
-
-.checkout-subheadings span{
-    /* display: flex;
-    justify-content: space-around;
-    margin: 30px;
-    margin-bottom: 20px; */
-    display: grid;
-    grid-template-columns: 150px 1fr 100px 150px 120px;
-    grid-template-rows: 1fr;
-    font-size: 25px;
-    color: white;
-    margin: 30px;
-    
-}
-
 .buttons{
     list-style-type: none;
     text-decoration: none;
@@ -278,7 +253,12 @@ body {
     border-radius: 20px;
     padding: 12px 20px;
     font-size: 20px;
-    margin: 10px;
+    margin-bottom: 10px;
+}
+
+.buttons:hover{
+    background-color: #583B34;
+    transition: 5ms;
 }
 
 .buttons a{
@@ -286,31 +266,9 @@ body {
     color: white;
 }
 
-.product-heading {
-    /* justify-content: space-around; */
-    border-bottom: #583B34 2px solid;
-    /* border-left: #583B34 2px solid; */
-    /* margin: 10px */
-    grid-column: 1;
-}
-
-.quantity-heading {
-    /* justify-content: space-around; */
-    border-bottom: #583B34 2px solid;
-    /* margin: 10px */
-    grid-column: 3;
-}
-
-.price-heading {
-    /* justify-content: space-around; */
-    border-bottom: #583B34 2px solid;
-    /* margin: 10px */
-    grid-column: 4;
-}
-
 .cartProduct{
     display: grid;
-    grid-template-columns: 100px 485px 90px 150px 110px;
+    grid-template-columns: 100px 485px 100px 150px 110px;
     grid-template-rows: 1fr;
     border: #583B34 1px solid;
     border-radius: 20px;
@@ -386,6 +344,8 @@ body {
     height: max-content;
     padding: 5px 5px;
     margin: 5px 10px;
+    margin-left: 10px;
+    align-self: center;
 }
 
 .cart-total {
@@ -393,9 +353,17 @@ body {
     justify-content: flex-end;
     color: white;
     font-size: 30px;
+    padding: 20px 5px;
 }
 
-.cart-price span{
+.cart-total p {
     display: flex;
     justify-content: flex-end;
+    padding: 0px 20px;
+}
+
+.cart-price{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
 }

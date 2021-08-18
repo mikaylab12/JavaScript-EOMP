@@ -328,7 +328,7 @@ input::placeholder {
     font-size: 20px;
   }
 
-  .create-product {
+.create-product {
     /* height:5vh; */
     padding: 5px 30px;
     font-size: 20px;

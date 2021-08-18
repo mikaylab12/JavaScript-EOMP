@@ -14,6 +14,7 @@ modalClose.addEventListener('click', function(){
 })
 
 
+
 // function to open and close delete user modal 
 let delModalBtn = document.querySelector(".delete-user")
 let delModal = document.querySelector(".deleteModal")
@@ -26,6 +27,7 @@ delModalBtn.addEventListener('click', function(){
 delModalClose.addEventListener('click', function(){
     delModal.classList.remove("deleteModal-active")
 })
+
 
 
 // function to show users
@@ -49,13 +51,14 @@ productContainer.innerHTML += `<div class = 'user'>
 })
 })
 
+
+
 // function to update user
 function updateUser(){
     let userID = document.querySelector("#user-id").value
     fetch(`https://flask-project-eomp.herokuapp.com/edit-user/${userID}/`, {
         method: 'PUT',
         body: JSON.stringify({
-            // "user_id": document.getElementById("user-id").value,
             "first_name": document.getElementById("name").value,
             "last_name": document.getElementById("surname").value,
             "email_address": document.getElementById("email").value,
@@ -75,6 +78,7 @@ function updateUser(){
         // myStorage.setItem("jwt-token", res["access_token"]);
         alert("User updated successfully.")})
 }
+
 
 
 // function to delete user

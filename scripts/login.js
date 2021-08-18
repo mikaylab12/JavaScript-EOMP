@@ -1,4 +1,4 @@
-// Login Function
+// Login Function for users 
 let entry_token = window.localStorage.getItem("jwt-token")
 
 function login(){
@@ -13,9 +13,9 @@ function login(){
     }
     }).then(res => res.json()).then(data => {
         console.log(data)
-        mystorage = window.localStorage
+        myStorage = window.localStorage
         console.log(data['entry__token'])
-        mystorage.setItem('jwt-token', data['entry__token'])
+        myStorage.setItem('jwt-token', data['entry__token'])
     });
     if (entry_token !== ""){
         window.location="products.html"

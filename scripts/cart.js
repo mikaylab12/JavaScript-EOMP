@@ -178,7 +178,7 @@ function cartTotal(){
         total = Math.round(total + (price * quantity))
     }
     total = Math.round(total * 100) / 100
-    document.getElementsByClassName('cart-price')[0].innerHTML = 'R' + total
+    document.getElementsByClassName('cart-price')[0].innerHTML = '   R ' + total
 
 }
 

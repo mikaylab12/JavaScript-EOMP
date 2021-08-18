@@ -38,17 +38,10 @@ body {
     color: black;
 }
 
-/* .nav-link{
-    margin-right: 30px;
-} */
-
 .search-and-heading{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* justify-content: center; */
-    /* max-width: 100%; */
-    /* margin-right: 10%; */
 }
 
 .navbar-header {

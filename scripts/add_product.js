@@ -68,6 +68,8 @@ fetch('https://flask-project-eomp.herokuapp.com/show-products')
                                         </div>`
 })
 })
+
+
 // function to add to cart
 function addToCart(id){
     // let quantity = e.target.parentNode.querySelector('.cartquantity').value
@@ -109,7 +111,7 @@ function addToCart(id){
 }
 
 
-// add product
+// add product to list of products available 
 function addProduct(){
     fetch(`https://flask-project-eomp.herokuapp.com/add-product/`, {
         method: 'POST',

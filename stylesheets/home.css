@@ -24,10 +24,7 @@ body {
     backdrop-filter: blur( 6.0px );
     -webkit-backdrop-filter: blur( 6.0px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    /* padding: 10px 5%; */
     max-height: 5vw;
-    /* max-width: 100%; */
-    /* z-index: 1; */
     
 }
 
