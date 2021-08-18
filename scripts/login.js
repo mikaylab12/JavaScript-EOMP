@@ -11,18 +11,24 @@ function login(){
     headers: {
         'Content-type': 'application/json',
     }
-    }).then(res => res.json()).then(data => {
+    }).then(res => res.json())
+    .then(data => {
         console.log(data)
         myStorage = window.localStorage
         console.log(data['entry__token'])
         myStorage.setItem('jwt-token', data['entry__token'])
-    });
-    if (entry_token !== ""){
-        // window.location="products.html"
+        if (data['description'] == "Invalid credentials"){
+            alert("Error, This is not a valid login in!")
         }
-    else{
-        alert("Error, This is not a valid login in!")
-     }
+        // else if (entry_token == ""){
+        //     alert("Error, This is not a valid login in!")
+        // }
+        else{
+            window.location="products.html"
+        }
+    });
+    
+   
 }
 
 function submitForm(event) {
