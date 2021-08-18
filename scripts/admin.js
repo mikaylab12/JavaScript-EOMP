@@ -74,8 +74,6 @@ function updateUser(){
     .then(res => res.json())
     .then(res => {
         console.log(res);
-        // console.log(res["access_token"]);
-        // myStorage.setItem("jwt-token", res["access_token"]);
         alert("User updated successfully.")})
 }
 

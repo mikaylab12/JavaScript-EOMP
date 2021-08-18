@@ -1,28 +1,6 @@
 const idStorage = window.localStorage
 
 let itemId = idStorage.getItem('id')
-// fetch(`https://flask-project-eomp.herokuapp.com/view-product/${itemId}/`)
-// .then(res => res.json())
-// .then(data =>{
-//         console.log(data)
-//         console.log(data['data'][1])
-//     let cartContainer = document.querySelector('#checkout-container')
-//     cartContainer.innerHTML = ""
-//         //  document.getElementsByClassName('product_id').innerHTML = `${data['data'][0]}`
-//         //  document.getElementsByClassName('cartProduct_title').innerHTML = `${data['data'][1]}`
-//     let cart = JSON.parse(idStorage.getItem('cart'))
-//     cart.forEach(product => {
-//     cartContainer.innerHTML += `<div class = 'cartProduct'>
-//                                 <img src="${data.data[5]}" class="cartProduct_image">
-//                                 <div class="cartProduct_info"> 
-//                                     <h1 class="cartProduct_id">${data.data[0]}.</h1>
-//                                     <h4 class="cartProduct_title">${data.data[1]}</h4>
-//                                 </div>
-//                                 <p class="cartProduct_price">R ${data.data[2]}<p> 
-        
-//                                 </div>`
-// })
-// })
 let cart = JSON.parse(idStorage.getItem('cart'))
 
 function createcart() {
@@ -124,7 +102,7 @@ createcart()
 
 
     
-// function to increase quantity
+// function to ensure quality does not drop below 1 
     function quantityChange(event){
         let input = event.target
         if (isNaN(input.value) || input.value <= 0){
@@ -134,19 +112,11 @@ createcart()
     }
     
     
-// function to remove item 
+// function to remove item from cart
     function removeItem(e){
         console.log(e.target.id)
         let itemname = e.target.id
         console.log(itemname)
-        // let removeCart = document.getElementsByClassName('')
-        // for(let i = 0; i < removeCart.length; i++){
-        //     let button = removeCart[i]
-        //     button.addEventListener('click', function(event){
-        //         let btnClicked = event.target
-        //         btnClicked.parentElement.parentElement.remove()
-        //         // cartTotal()
-        //     })
         let quantityInputs = document.getElementsByClassName('cartProduct-quantity-input')
         for(let i = 0; i < quantityInputs.length; i++){
             let input = quantityInputs[i]
@@ -163,7 +133,7 @@ createcart()
         cartTotal()
     }
 
-// function to calculate total amount : Tashwill
+// function to calculate total amount
 function cartTotal(){
     let cartContainer = document.querySelector('#checkout-container')[0]
     let cartRow = document.getElementsByClassName('cartProduct')
