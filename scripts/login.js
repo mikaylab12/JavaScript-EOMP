@@ -18,7 +18,7 @@ function login(){
         myStorage.setItem('jwt-token', data['entry__token'])
     });
     if (entry_token !== ""){
-        window.location="products.html"
+        // window.location="products.html"
         }
     else{
         alert("Error, This is not a valid login in!")
